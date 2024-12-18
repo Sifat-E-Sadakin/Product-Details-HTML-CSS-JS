@@ -1,0 +1,54 @@
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked + div {
+  box-shadow: 0 0 0 2px var(--tw-ring-color, #6576ff);
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.shake {
+  animation: shake 0.5s;
+}
+
+.toaster {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.toaster.show {
+  opacity: 1;
+}
+
+.error {
+  color: red;
+  display: none;
+}
+
+.error.show {
+  display: block;
+}

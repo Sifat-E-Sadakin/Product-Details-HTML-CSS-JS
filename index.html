@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Card</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="antialiased">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div class="w-full">
+          <img
+            id="thumbImage"
+            src=""
+            alt="watch"
+            class="w-full max-h-[400px] lg:max-h-full object-contain" />
+        </div>
+        <div class="ps-0 lg:ps-16">
+          <h1
+            id="productName"
+            class="font-bold text-2xl sm:text-3xl lg:text-4xl text-[#364A63] mb-3"></h1>
+          <div class="mb-5 flex items-center gap-2">
+            <div>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+            </div>
+            <div
+              id="productRating"
+              class="font-normal text-sm text-[#8091A7] "></div>
+          </div>
+          <div class="flex items-center gap-2 mb-5">
+            <p
+              id="mainPrice"
+              class="font-normal text-lg sm:text-xl text-[#8091A7] line-through"></p>
+            <p
+              id="finalPrice"
+              class="font-bold text-xl sm:text-2xl text-[#6576FF] -translate-y-[2px]"></p>
+          </div>
+          <div class="text-base sm:text-lg font-normal text-[#8091A7] mb-5">
+            <p id="productDescription"></p>
+          </div>
+          <div class="flex gap-5 flex-wrap mb-5">
+            <div>
+              <h6 class="text-xs sm:text-sm font-normal text-[#8091A7]">
+                Type
+              </h6>
+              <p
+                id="productType"
+                class="font-bold text-sm sm:text-base text-[#364A63]"></p>
+            </div>
+            <div>
+              <h6 class="text-xs sm:text-sm font-normal text-[#8091A7]">
+                Model
+              </h6>
+              <p
+                id="productModel"
+                class="font-bold text-sm sm:text-base text-[#364A63]"></p>
+            </div>
+          </div>
+          <div class="mb-5">
+            <h2 class="text-sm sm:text-lg font-bold text-[#364A63] mb-3">
+              Brand Color
+            </h2>
+            <div id="colorOptions" class="flex gap-3 flex-wrap"></div>
+          </div>
+          <div>
+            <h2 class="text-sm sm:text-lg font-bold text-[#364A63] mb-3">
+              Wrist Sizes
+            </h2>
+            <div id="sizeOptions" class="flex gap-3 flex-wrap mb-5"></div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div id="shakeCounter" class="h-9 flex items-center">
+              <button id="decreaseCount" class="border w-9 h-full">-</button>
+              <input
+                id="checkoutCount"
+                type="text"
+                value="0"
+                class="border w-14 h-full text-center"
+                readonly />
+              <button id="increaseCount" class="border w-9 h-full">+</button>
+            </div>
+            <button
+              id="addToCart"
+              class="text-white py-2 px-4 sm:px-5 h-9 flex justify-center items-center rounded font-bold text-sm"
+              style="background-color: #6576FF;">
+              Add to Cart
+            </button>
+            <div id="errorMessage" class="error">
+              Checkout count must be greater than 0!
+            </div>
+            <div class="heart-Emo">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-heart"
+                viewBox="0 0 16 16"></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        id="checkoutButton"
+        class="mt-10 flex justify-center duration-300 ease-in-out"
+        style="opacity: 0;">
+        <button
+          class="py-2 sm:py-3 px-5 sm:px-6 flex justify-center items-center rounded-3xl"
+          style="background-color: #FFBB5A;">
+          <span class="font-bold text-sm text-[#364A63]">Checkout</span>
+          <span
+            id="totalItemCount"
+            class="inline-block bg-white py-1 px-2 rounded-md font-bold text-xs text-[#364A63] ms-4">
+          </span>
+        </button>
+      </div>
+      <div
+        id="dynamicModal"
+        class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 hidden flex justify-center items-center ">
+        <div
+          class="bg-white w-full sm:w-3/4 lg:w-1/2 h-[75vh] rounded-lg p-5 sm:p-11">
+          <div>
+            <h1 class="font-bold text-xl sm:text-2xl text-[#364A63] mb-5">
+              Your Cart
+            </h1>
+            <div class="overflow-auto max-h-[50vh] mb-5">
+              <table class="w-full">
+                <thead
+                  class="font-normal text-xs sm:text-sm text-[#8091A7] border-b border-[#DBDFEA]">
+                  <tr class="text-left">
+                    <th>Item</th>
+                    <th>Color</th>
+                    <th>Size</th>
+                    <th>Qnt</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+                <tbody id="modalData" class="border-b border-[#DBDFEA]"></tbody>
+                <tfoot>
+                  <tr>
+                    <td
+                      colspan="3"
+                      class="py-5 font-bold text-sm sm:text-base text-[#364A63]">
+                      Total
+                    </td>
+                    <td
+                      id="totalQuantity"
+                      class="py-5 font-bold text-sm text-[#364A63]"></td>
+                    <td
+                      id="totalPrice"
+                      class="py-5 font-bold text-lg text-[#364A63]"></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <div class="flex justify-end mt-5 gap-3">
+              <button
+                id="continueShopping"
+                class="border border-[#DBDFEA] font-bold text-sm text-[#364A63] px-6 py-2 rounded-lg">
+                Continue Shopping
+              </button>
+              <button
+                id="checkout"
+                class="font-bold text-sm text-white px-6 py-2 rounded-lg"
+                style="background-color: #6576FF;">
+                Checkout
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="toaster" class="toaster">Item added to cart!</div>
+    <script src="productCard.js"></script>
+  </body>
+</html>
