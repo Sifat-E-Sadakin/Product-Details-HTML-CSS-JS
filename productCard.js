@@ -22,22 +22,22 @@ const productList = [
       {
         color: "Blue",
         code: "#816BFF",
-        img: "/assets/blue.png",
+        img: "./assets/blue.png",
       },
       {
         color: "Sky",
         code: "#1FCEC9",
-        img: "/assets/sky.png",
+        img: "./assets/sky.png",
       },
       {
         color: "Cyan",
         code: "#4B97D3",
-        img: "/assets/cyan.png",
+        img: "./assets/cyan.png",
       },
       {
         color: "Black",
         code: "#3B4747",
-        img: "/assets/black.png",
+        img: "./assets/black.png",
       },
     ],
     available_sizes: [
