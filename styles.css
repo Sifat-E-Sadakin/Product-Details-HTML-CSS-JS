@@ -28,6 +28,9 @@ input[type="radio"]:checked + div {
   animation: shake 0.5s;
 }
 
+.checked {
+  color: #ffd200;
+}
 .toaster {
   position: fixed;
   top: 20px;
